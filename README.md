@@ -9,12 +9,14 @@ This is an example of an analysis module for hip chat, the module can analyse a 
 learning more about string analysis in chat messaging
 
 ## Code Example
+```
 HipChatAnalyzer *hipChatAnalyzerhipChatAnalyzer = [[HipChatAnalyzer alloc] init];
 [self.hipChatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
 
 - (void) chatMessageAnalyzer:(id<ChatMessageAnalyzer>)messageAnalyzer didFinishWithResult:(NSString *)jsonString{
 //add your code here
 }
+```
 ## Tests
 
 in xcode open the tests tab and run any of the 32 unit tests provided
