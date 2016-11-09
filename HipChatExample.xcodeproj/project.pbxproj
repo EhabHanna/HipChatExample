@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		145E94591DD2FF3900E2CB2A /* EmoctionsAnalyzingStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 145E94581DD2FF3900E2CB2A /* EmoctionsAnalyzingStrategyTest.m */; };
+		F4DD7B6E1DD38D1000000024 /* URLAnalyzingStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B6D1DD38D0F00000024 /* URLAnalyzingStrategyTest.m */; };
+		F4DD7B721DD3A04B00000024 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B711DD3A04B00000024 /* Reachability.m */; };
+		F4DD7B8E1DD3AD8100000024 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B761DD3AD8100000024 /* NSObject+SBJson.m */; };
+		F4DD7B8F1DD3AD8100000024 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B791DD3AD8100000024 /* SBJsonParser.m */; };
+		F4DD7B901DD3AD8100000024 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B7B1DD3AD8100000024 /* SBJsonStreamParser.m */; };
+		F4DD7B911DD3AD8100000024 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B7D1DD3AD8100000024 /* SBJsonStreamParserAccumulator.m */; };
+		F4DD7B921DD3AD8100000024 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B7F1DD3AD8100000024 /* SBJsonStreamParserAdapter.m */; };
+		F4DD7B931DD3AD8100000024 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B811DD3AD8100000024 /* SBJsonStreamParserState.m */; };
+		F4DD7B941DD3AD8100000024 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B831DD3AD8100000024 /* SBJsonStreamWriter.m */; };
+		F4DD7B951DD3AD8100000024 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B851DD3AD8100000024 /* SBJsonStreamWriterAccumulator.m */; };
+		F4DD7B961DD3AD8100000024 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B871DD3AD8100000024 /* SBJsonStreamWriterState.m */; };
+		F4DD7B971DD3AD8100000024 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B891DD3AD8100000024 /* SBJsonTokeniser.m */; };
+		F4DD7B981DD3AD8100000024 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B8B1DD3AD8100000024 /* SBJsonUTF8Stream.m */; };
+		F4DD7B991DD3AD8100000024 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B8D1DD3AD8100000024 /* SBJsonWriter.m */; };
+		F4DD7B9C1DD3B12600000024 /* HipChatAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B9B1DD3B12600000024 /* HipChatAnalyzer.m */; };
+		F4DD7B9E1DD3B54000000024 /* HipChatAnalyzerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DD7B9D1DD3B54000000024 /* HipChatAnalyzerTest.m */; };
+		F4E28A801DD2E722004672CE /* ChatMessageAnalyzerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E28A7F1DD2E722004672CE /* ChatMessageAnalyzerImpl.m */; };
+		F4E28A821DD2EAD7004672CE /* MentionsAnalyzingStartegyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E28A811DD2EAD7004672CE /* MentionsAnalyzingStartegyTest.m */; };
+		F4FD5A7F1DD0FEAB00FDF977 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5A7E1DD0FEAB00FDF977 /* main.m */; };
+		F4FD5A821DD0FEAB00FDF977 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5A811DD0FEAB00FDF977 /* AppDelegate.m */; };
+		F4FD5A851DD0FEAB00FDF977 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5A841DD0FEAB00FDF977 /* ViewController.m */; };
+		F4FD5A881DD0FEAB00FDF977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FD5A861DD0FEAB00FDF977 /* Main.storyboard */; };
+		F4FD5A8A1DD0FEAB00FDF977 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FD5A891DD0FEAB00FDF977 /* Images.xcassets */; };
+		F4FD5A8D1DD0FEAB00FDF977 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FD5A8B1DD0FEAB00FDF977 /* LaunchScreen.xib */; };
+		F4FD5AA91DD1003800FDF977 /* MentionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5AA81DD1003800FDF977 /* MentionsAnalyzer.m */; };
+		F4FD5AAC1DD1024000FDF977 /* URLAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5AAB1DD1024000FDF977 /* URLAnalyzer.m */; };
+		F4FD5AB01DD1189900FDF977 /* EmoctionsAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FD5AAF1DD1189900FDF977 /* EmoctionsAnalyzer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4FD5A931DD0FEAB00FDF977 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4FD5A711DD0FEAB00FDF977 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4FD5A781DD0FEAB00FDF977;
+			remoteInfo = HipChatExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		145E94581DD2FF3900E2CB2A /* EmoctionsAnalyzingStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoctionsAnalyzingStrategyTest.m; sourceTree = "<group>"; };
+		F4DD7B6D1DD38D0F00000024 /* URLAnalyzingStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLAnalyzingStrategyTest.m; sourceTree = "<group>"; };
+		F4DD7B701DD3A04B00000024 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F4DD7B711DD3A04B00000024 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F4DD7B751DD3AD8100000024 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		F4DD7B761DD3AD8100000024 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		F4DD7B771DD3AD8100000024 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		F4DD7B781DD3AD8100000024 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		F4DD7B791DD3AD8100000024 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		F4DD7B7A1DD3AD8100000024 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		F4DD7B7B1DD3AD8100000024 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		F4DD7B7C1DD3AD8100000024 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		F4DD7B7D1DD3AD8100000024 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		F4DD7B7E1DD3AD8100000024 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		F4DD7B7F1DD3AD8100000024 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		F4DD7B801DD3AD8100000024 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		F4DD7B811DD3AD8100000024 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		F4DD7B821DD3AD8100000024 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		F4DD7B831DD3AD8100000024 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		F4DD7B841DD3AD8100000024 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		F4DD7B851DD3AD8100000024 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		F4DD7B861DD3AD8100000024 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		F4DD7B871DD3AD8100000024 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		F4DD7B881DD3AD8100000024 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		F4DD7B891DD3AD8100000024 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		F4DD7B8A1DD3AD8100000024 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		F4DD7B8B1DD3AD8100000024 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		F4DD7B8C1DD3AD8100000024 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		F4DD7B8D1DD3AD8100000024 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		F4DD7B9A1DD3B12600000024 /* HipChatAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HipChatAnalyzer.h; sourceTree = "<group>"; };
+		F4DD7B9B1DD3B12600000024 /* HipChatAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HipChatAnalyzer.m; sourceTree = "<group>"; };
+		F4DD7B9D1DD3B54000000024 /* HipChatAnalyzerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HipChatAnalyzerTest.m; sourceTree = "<group>"; };
+		F4E28A7D1DD2E606004672CE /* ChatMessageAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageAnalyzer.h; sourceTree = "<group>"; };
+		F4E28A7E1DD2E722004672CE /* ChatMessageAnalyzerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageAnalyzerImpl.h; sourceTree = "<group>"; };
+		F4E28A7F1DD2E722004672CE /* ChatMessageAnalyzerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageAnalyzerImpl.m; sourceTree = "<group>"; };
+		F4E28A811DD2EAD7004672CE /* MentionsAnalyzingStartegyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsAnalyzingStartegyTest.m; sourceTree = "<group>"; };
+		F4FD5A791DD0FEAB00FDF977 /* HipChatExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HipChatExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FD5A7D1DD0FEAB00FDF977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FD5A7E1DD0FEAB00FDF977 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4FD5A801DD0FEAB00FDF977 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F4FD5A811DD0FEAB00FDF977 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F4FD5A831DD0FEAB00FDF977 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F4FD5A841DD0FEAB00FDF977 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F4FD5A871DD0FEAB00FDF977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F4FD5A891DD0FEAB00FDF977 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4FD5A8C1DD0FEAB00FDF977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F4FD5A921DD0FEAB00FDF977 /* HipChatExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HipChatExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FD5A971DD0FEAB00FDF977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FD5A981DD0FEAB00FDF977 /* HipChatExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HipChatExampleTests.m; sourceTree = "<group>"; };
+		F4FD5AA61DD0FFB600FDF977 /* AnalyzingStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyzingStrategy.h; sourceTree = "<group>"; };
+		F4FD5AA71DD1003800FDF977 /* MentionsAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsAnalyzer.h; sourceTree = "<group>"; };
+		F4FD5AA81DD1003800FDF977 /* MentionsAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsAnalyzer.m; sourceTree = "<group>"; };
+		F4FD5AAA1DD1024000FDF977 /* URLAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLAnalyzer.h; sourceTree = "<group>"; };
+		F4FD5AAB1DD1024000FDF977 /* URLAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLAnalyzer.m; sourceTree = "<group>"; };
+		F4FD5AAD1DD1040500FDF977 /* HipChatConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HipChatConstants.h; sourceTree = "<group>"; };
+		F4FD5AAE1DD1189900FDF977 /* EmoctionsAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoctionsAnalyzer.h; sourceTree = "<group>"; };
+		F4FD5AAF1DD1189900FDF977 /* EmoctionsAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoctionsAnalyzer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4FD5A761DD0FEAB00FDF977 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FD5A8F1DD0FEAB00FDF977 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4DD7B6F1DD3A04B00000024 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD7B741DD3AD8100000024 /* SBJson */,
+				F4DD7B701DD3A04B00000024 /* Reachability.h */,
+				F4DD7B711DD3A04B00000024 /* Reachability.m */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		F4DD7B741DD3AD8100000024 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD7B751DD3AD8100000024 /* NSObject+SBJson.h */,
+				F4DD7B761DD3AD8100000024 /* NSObject+SBJson.m */,
+				F4DD7B771DD3AD8100000024 /* SBJson.h */,
+				F4DD7B781DD3AD8100000024 /* SBJsonParser.h */,
+				F4DD7B791DD3AD8100000024 /* SBJsonParser.m */,
+				F4DD7B7A1DD3AD8100000024 /* SBJsonStreamParser.h */,
+				F4DD7B7B1DD3AD8100000024 /* SBJsonStreamParser.m */,
+				F4DD7B7C1DD3AD8100000024 /* SBJsonStreamParserAccumulator.h */,
+				F4DD7B7D1DD3AD8100000024 /* SBJsonStreamParserAccumulator.m */,
+				F4DD7B7E1DD3AD8100000024 /* SBJsonStreamParserAdapter.h */,
+				F4DD7B7F1DD3AD8100000024 /* SBJsonStreamParserAdapter.m */,
+				F4DD7B801DD3AD8100000024 /* SBJsonStreamParserState.h */,
+				F4DD7B811DD3AD8100000024 /* SBJsonStreamParserState.m */,
+				F4DD7B821DD3AD8100000024 /* SBJsonStreamWriter.h */,
+				F4DD7B831DD3AD8100000024 /* SBJsonStreamWriter.m */,
+				F4DD7B841DD3AD8100000024 /* SBJsonStreamWriterAccumulator.h */,
+				F4DD7B851DD3AD8100000024 /* SBJsonStreamWriterAccumulator.m */,
+				F4DD7B861DD3AD8100000024 /* SBJsonStreamWriterState.h */,
+				F4DD7B871DD3AD8100000024 /* SBJsonStreamWriterState.m */,
+				F4DD7B881DD3AD8100000024 /* SBJsonTokeniser.h */,
+				F4DD7B891DD3AD8100000024 /* SBJsonTokeniser.m */,
+				F4DD7B8A1DD3AD8100000024 /* SBJsonUTF8Stream.h */,
+				F4DD7B8B1DD3AD8100000024 /* SBJsonUTF8Stream.m */,
+				F4DD7B8C1DD3AD8100000024 /* SBJsonWriter.h */,
+				F4DD7B8D1DD3AD8100000024 /* SBJsonWriter.m */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
+		F4FD5A701DD0FEAB00FDF977 = {
+			isa = PBXGroup;
+			children = (
+				F4FD5A7B1DD0FEAB00FDF977 /* HipChatExample */,
+				F4FD5A951DD0FEAB00FDF977 /* HipChatExampleTests */,
+				F4FD5A7A1DD0FEAB00FDF977 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4FD5A7A1DD0FEAB00FDF977 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD5A791DD0FEAB00FDF977 /* HipChatExample.app */,
+				F4FD5A921DD0FEAB00FDF977 /* HipChatExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4FD5A7B1DD0FEAB00FDF977 /* HipChatExample */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD7B6F1DD3A04B00000024 /* 3rdParty */,
+				F4FD5AA21DD0FF6D00FDF977 /* Models */,
+				F4FD5A801DD0FEAB00FDF977 /* AppDelegate.h */,
+				F4FD5A811DD0FEAB00FDF977 /* AppDelegate.m */,
+				F4FD5A831DD0FEAB00FDF977 /* ViewController.h */,
+				F4FD5A841DD0FEAB00FDF977 /* ViewController.m */,
+				F4FD5AAD1DD1040500FDF977 /* HipChatConstants.h */,
+				F4FD5A861DD0FEAB00FDF977 /* Main.storyboard */,
+				F4FD5A891DD0FEAB00FDF977 /* Images.xcassets */,
+				F4FD5A8B1DD0FEAB00FDF977 /* LaunchScreen.xib */,
+				F4FD5A7C1DD0FEAB00FDF977 /* Supporting Files */,
+			);
+			path = HipChatExample;
+			sourceTree = "<group>";
+		};
+		F4FD5A7C1DD0FEAB00FDF977 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD5A7D1DD0FEAB00FDF977 /* Info.plist */,
+				F4FD5A7E1DD0FEAB00FDF977 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4FD5A951DD0FEAB00FDF977 /* HipChatExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD7B9D1DD3B54000000024 /* HipChatAnalyzerTest.m */,
+				F4DD7B6D1DD38D0F00000024 /* URLAnalyzingStrategyTest.m */,
+				145E94581DD2FF3900E2CB2A /* EmoctionsAnalyzingStrategyTest.m */,
+				F4E28A811DD2EAD7004672CE /* MentionsAnalyzingStartegyTest.m */,
+				F4FD5A981DD0FEAB00FDF977 /* HipChatExampleTests.m */,
+				F4FD5A961DD0FEAB00FDF977 /* Supporting Files */,
+			);
+			path = HipChatExampleTests;
+			sourceTree = "<group>";
+		};
+		F4FD5A961DD0FEAB00FDF977 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD5A971DD0FEAB00FDF977 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4FD5AA21DD0FF6D00FDF977 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD5AA41DD0FF6D00FDF977 /* Products */,
+				F4FD5AA51DD0FF6D00FDF977 /* Strategies */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4FD5AA41DD0FF6D00FDF977 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4E28A7D1DD2E606004672CE /* ChatMessageAnalyzer.h */,
+				F4E28A7E1DD2E722004672CE /* ChatMessageAnalyzerImpl.h */,
+				F4E28A7F1DD2E722004672CE /* ChatMessageAnalyzerImpl.m */,
+				F4DD7B9A1DD3B12600000024 /* HipChatAnalyzer.h */,
+				F4DD7B9B1DD3B12600000024 /* HipChatAnalyzer.m */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		F4FD5AA51DD0FF6D00FDF977 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				F4FD5AA61DD0FFB600FDF977 /* AnalyzingStrategy.h */,
+				F4FD5AA71DD1003800FDF977 /* MentionsAnalyzer.h */,
+				F4FD5AA81DD1003800FDF977 /* MentionsAnalyzer.m */,
+				F4FD5AAA1DD1024000FDF977 /* URLAnalyzer.h */,
+				F4FD5AAB1DD1024000FDF977 /* URLAnalyzer.m */,
+				F4FD5AAE1DD1189900FDF977 /* EmoctionsAnalyzer.h */,
+				F4FD5AAF1DD1189900FDF977 /* EmoctionsAnalyzer.m */,
+			);
+			path = Strategies;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4FD5A781DD0FEAB00FDF977 /* HipChatExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FD5A9C1DD0FEAB00FDF977 /* Build configuration list for PBXNativeTarget "HipChatExample" */;
+			buildPhases = (
+				F4FD5A751DD0FEAB00FDF977 /* Sources */,
+				F4FD5A761DD0FEAB00FDF977 /* Frameworks */,
+				F4FD5A771DD0FEAB00FDF977 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HipChatExample;
+			productName = HipChatExample;
+			productReference = F4FD5A791DD0FEAB00FDF977 /* HipChatExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4FD5A911DD0FEAB00FDF977 /* HipChatExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FD5A9F1DD0FEAB00FDF977 /* Build configuration list for PBXNativeTarget "HipChatExampleTests" */;
+			buildPhases = (
+				F4FD5A8E1DD0FEAB00FDF977 /* Sources */,
+				F4FD5A8F1DD0FEAB00FDF977 /* Frameworks */,
+				F4FD5A901DD0FEAB00FDF977 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4FD5A941DD0FEAB00FDF977 /* PBXTargetDependency */,
+			);
+			name = HipChatExampleTests;
+			productName = HipChatExampleTests;
+			productReference = F4FD5A921DD0FEAB00FDF977 /* HipChatExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4FD5A711DD0FEAB00FDF977 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Ehab Asaad's Mac Mini";
+				TargetAttributes = {
+					F4FD5A781DD0FEAB00FDF977 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					F4FD5A911DD0FEAB00FDF977 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = F4FD5A781DD0FEAB00FDF977;
+					};
+				};
+			};
+			buildConfigurationList = F4FD5A741DD0FEAB00FDF977 /* Build configuration list for PBXProject "HipChatExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4FD5A701DD0FEAB00FDF977;
+			productRefGroup = F4FD5A7A1DD0FEAB00FDF977 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4FD5A781DD0FEAB00FDF977 /* HipChatExample */,
+				F4FD5A911DD0FEAB00FDF977 /* HipChatExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4FD5A771DD0FEAB00FDF977 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FD5A881DD0FEAB00FDF977 /* Main.storyboard in Resources */,
+				F4FD5A8D1DD0FEAB00FDF977 /* LaunchScreen.xib in Resources */,
+				F4FD5A8A1DD0FEAB00FDF977 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FD5A901DD0FEAB00FDF977 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4FD5A751DD0FEAB00FDF977 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DD7B961DD3AD8100000024 /* SBJsonStreamWriterState.m in Sources */,
+				F4DD7B9C1DD3B12600000024 /* HipChatAnalyzer.m in Sources */,
+				F4DD7B991DD3AD8100000024 /* SBJsonWriter.m in Sources */,
+				F4E28A801DD2E722004672CE /* ChatMessageAnalyzerImpl.m in Sources */,
+				F4FD5AA91DD1003800FDF977 /* MentionsAnalyzer.m in Sources */,
+				F4DD7B951DD3AD8100000024 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				F4DD7B911DD3AD8100000024 /* SBJsonStreamParserAccumulator.m in Sources */,
+				F4FD5A851DD0FEAB00FDF977 /* ViewController.m in Sources */,
+				F4DD7B8F1DD3AD8100000024 /* SBJsonParser.m in Sources */,
+				F4FD5A821DD0FEAB00FDF977 /* AppDelegate.m in Sources */,
+				F4FD5A7F1DD0FEAB00FDF977 /* main.m in Sources */,
+				F4FD5AAC1DD1024000FDF977 /* URLAnalyzer.m in Sources */,
+				F4DD7B721DD3A04B00000024 /* Reachability.m in Sources */,
+				F4DD7B981DD3AD8100000024 /* SBJsonUTF8Stream.m in Sources */,
+				F4DD7B971DD3AD8100000024 /* SBJsonTokeniser.m in Sources */,
+				F4DD7B931DD3AD8100000024 /* SBJsonStreamParserState.m in Sources */,
+				F4DD7B921DD3AD8100000024 /* SBJsonStreamParserAdapter.m in Sources */,
+				F4DD7B8E1DD3AD8100000024 /* NSObject+SBJson.m in Sources */,
+				F4FD5AB01DD1189900FDF977 /* EmoctionsAnalyzer.m in Sources */,
+				F4DD7B941DD3AD8100000024 /* SBJsonStreamWriter.m in Sources */,
+				F4DD7B901DD3AD8100000024 /* SBJsonStreamParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FD5A8E1DD0FEAB00FDF977 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DD7B6E1DD38D1000000024 /* URLAnalyzingStrategyTest.m in Sources */,
+				F4DD7B9E1DD3B54000000024 /* HipChatAnalyzerTest.m in Sources */,
+				145E94591DD2FF3900E2CB2A /* EmoctionsAnalyzingStrategyTest.m in Sources */,
+				F4E28A821DD2EAD7004672CE /* MentionsAnalyzingStartegyTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4FD5A941DD0FEAB00FDF977 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4FD5A781DD0FEAB00FDF977 /* HipChatExample */;
+			targetProxy = F4FD5A931DD0FEAB00FDF977 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4FD5A861DD0FEAB00FDF977 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FD5A871DD0FEAB00FDF977 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F4FD5A8B1DD0FEAB00FDF977 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FD5A8C1DD0FEAB00FDF977 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4FD5A9A1DD0FEAB00FDF977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4FD5A9B1DD0FEAB00FDF977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4FD5A9D1DD0FEAB00FDF977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HipChatExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F4FD5A9E1DD0FEAB00FDF977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HipChatExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F4FD5AA01DD0FEAB00FDF977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HipChatExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HipChatExample.app/HipChatExample";
+			};
+			name = Debug;
+		};
+		F4FD5AA11DD0FEAB00FDF977 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HipChatExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HipChatExample.app/HipChatExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4FD5A741DD0FEAB00FDF977 /* Build configuration list for PBXProject "HipChatExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FD5A9A1DD0FEAB00FDF977 /* Debug */,
+				F4FD5A9B1DD0FEAB00FDF977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4FD5A9C1DD0FEAB00FDF977 /* Build configuration list for PBXNativeTarget "HipChatExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FD5A9D1DD0FEAB00FDF977 /* Debug */,
+				F4FD5A9E1DD0FEAB00FDF977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4FD5A9F1DD0FEAB00FDF977 /* Build configuration list for PBXNativeTarget "HipChatExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FD5AA01DD0FEAB00FDF977 /* Debug */,
+				F4FD5AA11DD0FEAB00FDF977 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4FD5A711DD0FEAB00FDF977 /* Project object */;
+}
