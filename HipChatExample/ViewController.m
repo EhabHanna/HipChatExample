@@ -20,9 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HipChatAnalyzer *hipchatAnalyzer = [[HipChatAnalyzer alloc] init];
-    
-    [hipchatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
+//    HipChatAnalyzer *hipchatAnalyzer = [[HipChatAnalyzer alloc] init];
+//    
+//    [hipchatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
 
 }
 

@@ -13,9 +13,11 @@
 @interface URLAnalyzer ()<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webview;
+@property (nonatomic, strong) NSMutableArray *analysisWebviews;
 @property (nonatomic, strong) NSMutableArray *analysisQueue;
 @property (nonatomic, strong) NSMutableArray *analysisResultQueue;
 @property (nonatomic, assign) int currentIndex;
+@property (nonatomic, assign) int completedAnalysis;
 @property (nonatomic, strong) NSMutableDictionary *currentAnalysisDict;
 @property (nonatomic, strong) id<AnalyzingStrategyDelegate> strongDelegate;
 @property (nonatomic, strong) NSOperationQueue *originalQueue;
@@ -74,7 +76,8 @@
     __block URLAnalyzer *blockSafeSelf = self;
     
     [self.originalQueue addOperationWithBlock:^{
-        [blockSafeSelf finishAnalyzingURLWithResultTitle:text];
+        
+        [blockSafeSelf finishAnalyzingForWebView:webView withResultTitle:text];
     }];
     
 }
@@ -86,7 +89,8 @@
     __block URLAnalyzer *blockSafeSelf = self;
     
     [self.originalQueue addOperationWithBlock:^{
-        [blockSafeSelf finishAnalyzingURLWithResultTitle:@"n/a"];
+        
+        [blockSafeSelf finishAnalyzingForWebView:webView withResultTitle:@"n/a"];
     }];
     
     
@@ -98,20 +102,16 @@
 - (void) beginURLQueueAnalysis{
     
     self.currentIndex = 0;
+    self.completedAnalysis = 0;
     self.analysisResultQueue = [[NSMutableArray alloc] initWithCapacity:self.analysisQueue.count];
-    [self analyzeURLAtCurrentIndex];
-}
-
-- (void) analyzeURLAtCurrentIndex{
+    self.analysisWebviews = [[NSMutableArray alloc] initWithCapacity:self.analysisQueue.count];
     
-    if (self.currentIndex < self.analysisQueue.count) {
-        
-        [self beginAnalyzingURL:[self.analysisQueue objectAtIndex:self.currentIndex]];
-    }else{
-        [self finishURLQueueAnalysis];
+    for (int i=0; i<self.analysisQueue.count; i++) {
+        [self beginAnalyzingURLAtIndex:i];
     }
     
 }
+
 
 - (void) finishURLQueueAnalysis{
     
@@ -134,18 +134,20 @@
 }
 
 #pragma mark - Individual URL analysis
-- (void) beginAnalyzingURL:(NSURL *) aURL{
+
+- (void) beginAnalyzingURLAtIndex:(int) index{
     
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:2];
     
+    NSURL *aURL = [self.analysisQueue objectAtIndex:index];
     
     [result setObject:aURL.absoluteString forKey:@"url"];
     
-    self.currentAnalysisDict = result;
+    [self.analysisResultQueue insertObject:result atIndex:index];
     
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     NetworkStatus netStatus = [reach currentReachabilityStatus];
-   
+    
     
     if (self.offlineMode || netStatus == NotReachable) {
         [self webView:self.webview didFailLoadWithError:nil];
@@ -159,9 +161,10 @@
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aURL];
             request.timeoutInterval = 30;
             
-            blockSafeSelf.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-            blockSafeSelf.webview.delegate = blockSafeSelf;
-            [blockSafeSelf.webview loadRequest:request];
+            UIWebView *aWebview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+            [blockSafeSelf.analysisWebviews insertObject:aWebview atIndex:index];
+            aWebview.delegate = blockSafeSelf;
+            [aWebview loadRequest:request];
             
         }];
         
@@ -170,15 +173,21 @@
     
 }
 
-- (void) finishAnalyzingURLWithResultTitle:(NSString *)title{
+-(void) finishAnalyzingForWebView:(UIWebView *) aWebView withResultTitle:(NSString *) title{
     
-    [self.currentAnalysisDict setObject:title forKey:@"title"];
-    [self.analysisResultQueue addObject:self.currentAnalysisDict];
-    self.currentIndex = self.currentIndex + 1;
-    [self analyzeURLAtCurrentIndex];
+    int index = (int)[self.analysisWebviews indexOfObject:aWebView];
+    
+    NSMutableDictionary *result = [self.analysisResultQueue objectAtIndex:index];
+    [result setObject:title forKey:@"title"];
+    
+    self.completedAnalysis = self.completedAnalysis + 1;
+    
+    if (self.completedAnalysis == self.analysisResultQueue.count) {
+        [self finishURLQueueAnalysis];
+    }
+    
 }
 
-#pragma mark -
 
 
 

@@ -27,7 +27,7 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     self.urlAnalyzer = [[URLAnalyzer alloc] init];
-    self.urlAnalyzer.offlineMode = YES;
+    //self.urlAnalyzer.offlineMode = YES;
     
 }
 
@@ -36,22 +36,6 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    
-     [self.urlAnalyzer analyzeString:@ "@https://gmail.com have you checked it today?" andNotifyDelegate:self];
-    
-    __weak __typeof(self) weakSelf = self;
-    [self setDelegateBlock:^(NSDictionary *aResult) {
-        
-        id self = weakSelf;
-        NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
-        XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
-
-    }];
-    
-   
-}
 - (void)testEmail {
     // This is an example of a functional test case.
     
@@ -71,15 +55,30 @@
 - (void)testmultiple {
     // This is an example of a functional test case.
     
-    [self.urlAnalyzer analyzeString:@ "@hey https://samsung.com & john@gmail.com, these are links" andNotifyDelegate:self];
+    [self.urlAnalyzer analyzeString:@ "@hey john@gmail.com,http://met.guc.edu.eg/Courses/OtherUndergrad.aspx https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-1-algorithmic-thinking-peak-finding/ https://www.atlassian.com/company these are links" andNotifyDelegate:self];
+    
+    __block XCTestExpectation *testExpectation = [self expectationWithDescription:@"finished non test case Analysis"];
+
     
     __weak __typeof(self) weakSelf = self;
     [self setDelegateBlock:^(NSDictionary *aResult) {
         
         id self = weakSelf;
         NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
-        XCTAssertEqual(urls.count,2,@"should find Exactly 2 mentions");
+        XCTAssertEqual(urls.count,4,@"should find Exactly 4 urls");
+        [testExpectation fulfill];
     }];
+    
+    
+    [self waitForExpectationsWithTimeout:120 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"its not working!");
+        }else{
+            NSLog(@"it worked");
+        }
+    }];
+    
+    
     
     
 }
