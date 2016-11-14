@@ -8,10 +8,10 @@
 
 #import "ViewController.h"
 
-#import "URLAnalyzer.h"
+#import "HipChatAnalyzer.h"
 
-@interface ViewController ()<AnalyzingStrategyDelegate>
-@property (nonatomic, strong) URLAnalyzer *urlAnalyzer;
+@interface ViewController ()<ChatMessageAnalyzerDelegate>
+
 @property (nonatomic, strong) NSDictionary *analysisResult;
 @end
 
@@ -19,7 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    HipChatAnalyzer *hipchatAnalyzer = [[HipChatAnalyzer alloc] init];
+    
+    [hipchatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
 
+}
+
+- (void) chatMessageAnalyzer:(id<ChatMessageAnalyzer>)messageAnalyzer didFinishWithResult:(NSString *)jsonString{
+    
+    NSLog(@"chat message analyzer did finish with result %@",jsonString);
+}
+
+- (void) chatMessageAnalyzer:(id<ChatMessageAnalyzer>)messageAnalyzer didFinishedAnalyzingStage:(int)stage{
+    
+    NSLog(@"chat message analyzer did finish stage %d of %d",stage,(int)[messageAnalyzer analysisModules].count);
 }
 
 - (void)didReceiveMemoryWarning {

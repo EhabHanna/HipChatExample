@@ -10,29 +10,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HipChatExample/Models/Strategies/EmoctionsAnalyzer.m"
-            timestampString = "500368385.527388"
+            timestampString = "500830698.479768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "-analyzeString:andNotifyDelegate:"
-            landmarkType = "5">
+            startingLineNumber = "101"
+            endingLineNumber = "101">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HipChatExample/Models/Strategies/EmoctionsAnalyzer.m"
-            timestampString = "500371278.699434"
+            filePath = "HipChatExample/Models/Strategies/URLAnalyzer.m"
+            timestampString = "500830698.479768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-isValidEmoction:"
-            landmarkType = "5">
+            startingLineNumber = "206"
+            endingLineNumber = "206">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

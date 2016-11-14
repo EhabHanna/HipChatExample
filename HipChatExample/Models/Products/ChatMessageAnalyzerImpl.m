@@ -64,17 +64,41 @@
 
 #pragma mark - 
 #pragma mark ChatMessageAnalyzer methods
-- (void) analyzeChatMessage:(NSString *)message withDelegate:(id<ChatMessageAnalyzerDelegate>)delegate{
+- (void) analyzeChatMessage:(NSString *)message withDelegate:(id<ChatMessageAnalyzerDelegate>)delegate concurrently:(BOOL)concurrently{
     
     self.analysisDelegate = delegate;
     self.finishedAnalysisStages = 0;
     
+    
+    
     for (id<AnalyzingStrategy> aStrategy in self.analysisModules) {
         
-        [aStrategy analyzeString:message andNotifyDelegate:self];
+        if (concurrently) {
+            
+            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            
+            [queue addOperationWithBlock:^{
+                
+                __weak typeof(self) weakSelf = self;
+
+                if (weakSelf) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    
+                    [aStrategy analyzeString:message andNotifyDelegate:strongSelf];
+                    
+                }
+                
+            }];
+        }else{
+            [aStrategy analyzeString:message andNotifyDelegate:self];
+        }
         
     }
     
+}
+
+- (void) analyzeChatMessage:(NSString *)message withDelegate:(id<ChatMessageAnalyzerDelegate>)delegate{
+    [self analyzeChatMessage:message withDelegate:delegate concurrently:YES];
 }
 
 #pragma mark - 

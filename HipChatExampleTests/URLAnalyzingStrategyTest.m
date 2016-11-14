@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) URLAnalyzer *urlAnalyzer;
 @property (nonatomic, strong) NSDictionary *analysisResult;
+@property (nonatomic, copy) void(^DelegateBlock)(NSDictionary *aResult);
 
 @end
 @implementation URLAnalyzingStrategyTest
@@ -40,17 +41,31 @@
     
      [self.urlAnalyzer analyzeString:@ "@https://gmail.com have you checked it today?" andNotifyDelegate:self];
     
-    NSArray *urls = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Links];
-    XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
-}
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
+        XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
 
+    }];
+    
+   
+}
 - (void)testEmail {
     // This is an example of a functional test case.
     
     [self.urlAnalyzer analyzeString:@ "@hey you should send a message to john@gmail.com, he will give you something cool" andNotifyDelegate:self];
     
-    NSArray *urls = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Links];
-    XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
+        XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
+    }];
+    
+    
 }
 
 - (void)testmultiple {
@@ -58,8 +73,15 @@
     
     [self.urlAnalyzer analyzeString:@ "@hey https://samsung.com & john@gmail.com, these are links" andNotifyDelegate:self];
     
-    NSArray *urls = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Links];
-    XCTAssertEqual(urls.count,2,@"should find Exactly 2 mentions");
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
+        XCTAssertEqual(urls.count,2,@"should find Exactly 2 mentions");
+    }];
+    
+    
 }
 
 - (void)testEncoded {
@@ -67,8 +89,15 @@
     
     [self.urlAnalyzer analyzeString:@ "@hey check this out http%3A%2F%2Fwww.w3schools.com%2Fhtml%2Fhtml_urlencode.asp" andNotifyDelegate:self];
     
-    NSArray *urls = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Links];
-    XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *urls = [aResult objectForKey:kHipChatAnalysisItemKey_Links];
+        XCTAssertEqual(urls.count,1,@"should find Exactly 1 mentions");
+    }];
+    
+    
 }
 
 
@@ -84,7 +113,7 @@
     
     self.analysisResult = result;
     NSLog(@"FinishedWith results \n%@", result);
-    
+    self.DelegateBlock(result);
 }
 
 @end

@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) EmoctionsAnalyzer *emoctionsAnalyzer;
 @property (nonatomic, strong) NSDictionary *analysisResult;
+@property (nonatomic, copy) void(^DelegateBlock)(NSDictionary *aResult);
 
 @end
 
@@ -36,9 +37,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(megusta) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,1,@"should find Exactly 1 mention");
+    }];
     
-    XCTAssertEqual(emoctions.count,1,@"should find Exactly 1 mention");
+    
     
     
 }
@@ -49,9 +57,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(meg%sta) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mentions,emoctions with non-alphanumeric chars should be ignored");
+    }];
     
-    XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mentions,emoctions with non-alphanumeric chars should be ignored");
+    
     
     
 }
@@ -62,9 +77,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(megustamegustamegusta) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mentions, emoctions with length > 15 should be ignored");
+    }];
     
-    XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mentions, emoctions with length > 15 should be ignored");
+    
     
     
 }
@@ -75,9 +97,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(coffee) (joedoe) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,2,@"should find Exactly 2 mentions");
+
+    }];
     
-    XCTAssertEqual(emoctions.count,2,@"should find Exactly 2 mentions");
     
     
 }
@@ -88,10 +117,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(coffee)(joedoe) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
     
-    XCTAssertEqual(emoctions.count,2,@"should find Exactly 2 mentions");
-    
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,2,@"should find Exactly 2 mentions");
+    }];
+
     
 }
 
@@ -101,9 +136,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"((megusta)) ((coffee)  (tea)) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,3,@"should find Exactly 3 mentions");
+    }];
     
-    XCTAssertEqual(emoctions.count,3,@"should find Exactly 3 mentions");
+    
     
     
 }
@@ -114,10 +156,17 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(((((((((((((((((megusta))))))))))))))))) ((coffee)  (tea)) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
     
-    XCTAssertEqual(emoctions.count,3,@"should find Exactly 3 mentions");
-    
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,3,@"should find Exactly 3 mentions");
+        
+    }];
+
     
 }
 
@@ -127,9 +176,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"() it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
+
+    }];
     
-    XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
     
     
 }
@@ -140,9 +196,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"( ) it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
+    }];
     
-    XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
+    
     
     
 }
@@ -153,9 +216,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(megusta it is nice to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
+    }];
     
-    XCTAssertEqual(emoctions.count,0,@"should find Exactly 0 mention");
+    
     
     
 }
@@ -166,9 +236,16 @@
     
     [self.emoctionsAnalyzer analyzeString:@"(megusta it is (nice) to meet you" andNotifyDelegate:self];
     
-    NSArray *emoctions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *emoctions = [aResult objectForKey:kHipChatAnalysisItemKey_Emoctions];
+        
+        XCTAssertEqual(emoctions.count,1,@"should find Exactly 0 mention");
+    }];
     
-    XCTAssertEqual(emoctions.count,1,@"should find Exactly 0 mention");
+    
     
     
 }
@@ -184,7 +261,7 @@
     
     self.analysisResult = result;
     NSLog(@"FinishedWith results \n%@", result);
-    
+    self.DelegateBlock(result);
 }
 
 @end

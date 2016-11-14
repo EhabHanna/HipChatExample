@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) MentionsAnalyzer *mentionsAnalyzer;
 @property (nonatomic, strong) NSDictionary *analysisResult;
+@property (nonatomic, copy) void(^DelegateBlock)(NSDictionary *aResult);
 
 @end
 
@@ -37,16 +38,31 @@
 - (void)testExample {
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@chris you around?" andNotifyDelegate:self];
-    XCTAssert(YES, @"Pass");
+    
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        XCTAssert(YES, @"Pass");
+    }];
+    
+    
 }
 
 - (void) testMultiple {
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@chris @john @kambell @jason you around?" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    
     
 }
 
@@ -54,9 +70,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@chris@john@kambell@jason you around?" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    
     
 }
 
@@ -64,9 +87,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@chris,@john;@kambell-@jason you around?" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,4,@"should find Exactly 4 mentions");
+    
     
 }
 
@@ -74,9 +104,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@chris you around? I wanted to ask you about jason? @ramond do you know where he is?" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,2,@"should find Exactly 2 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,2,@"should find Exactly 2 mentions");
+   
     
 }
 
@@ -84,9 +121,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@ you around? I wanted to ask you about jason" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,0,@"should find Exactly 0 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,0,@"should find Exactly 0 mentions");
+    
     
 }
 
@@ -94,9 +138,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@@@@@@@ @@@@@@ you around?@@@@ I wanted to ask you about jason" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,0,@"should find Exactly 0 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,0,@"should find Exactly 0 mentions");
+    
     
 }
 
@@ -104,9 +155,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@@chris you around?I wanted to ask you about jason" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,1,@"should find Exactly 1 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,1,@"should find Exactly 1 mentions");
+   
     
 }
 
@@ -114,9 +172,16 @@
     // This is an example of a functional test case.
     [self.mentionsAnalyzer analyzeString:@ "@@chris you around?I wanted to ask you about jason's email is it jason@gmail.com ?" andNotifyDelegate:self];
     
-    NSArray *mentions = [self.analysisResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+    __weak __typeof(self) weakSelf = self;
+    [self setDelegateBlock:^(NSDictionary *aResult) {
+        
+        id self = weakSelf;
+        NSArray *mentions = [aResult objectForKey:kHipChatAnalysisItemKey_Mentions];
+        
+        XCTAssertEqual(mentions.count,1,@"should find Exactly 1 mentions");
+    }];
     
-    XCTAssertEqual(mentions.count,1,@"should find Exactly 1 mentions");
+    
     
 }
 
@@ -132,7 +197,7 @@
     
     self.analysisResult = result;
     NSLog(@"FinishedWith results \n%@", result);
-    
+    self.DelegateBlock(result);
 }
 
 @end

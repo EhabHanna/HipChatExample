@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *analysisModules;
 @property (nonatomic, assign) id<ChatMessageAnalyzerDelegate> analysisDelegate;
 
+- (void) analyzeChatMessage:(NSString *) message withDelegate:(id<ChatMessageAnalyzerDelegate>) delegate concurrently:(BOOL) concurrently;
 - (void) analyzeChatMessage:(NSString *) message withDelegate:(id<ChatMessageAnalyzerDelegate>) delegate;
 
 @end

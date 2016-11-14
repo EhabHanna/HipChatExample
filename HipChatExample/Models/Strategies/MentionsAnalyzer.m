@@ -50,15 +50,17 @@
     
     [self.analysisResult setObject:mentions forKey:kHipChatAnalysisItemKey_Mentions];
     
-    if (self.analysisDelegate) {
-        
-        if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        if (self.analysisDelegate) {
             
-            [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+            if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+                
+                [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+                
+            }
             
         }
-        
-    }
+    }];
     
 }
 

@@ -52,16 +52,18 @@
     
     [self.analysisResult setObject:emoctions forKey:kHipChatAnalysisItemKey_Emoctions];
     
-    if (self.analysisDelegate) {
-        
-        if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        if (self.analysisDelegate) {
             
-            [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+            if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+                
+                [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+                
+            }
             
         }
-        
-    }
-    
+    }];
+
 }
 
 - (BOOL) isValidEmoction:(NSString *) aString{

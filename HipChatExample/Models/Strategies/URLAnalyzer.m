@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSMutableArray *analysisResultQueue;
 @property (nonatomic, assign) int currentIndex;
 @property (nonatomic, strong) NSMutableDictionary *currentAnalysisDict;
+@property (nonatomic, strong) id<AnalyzingStrategyDelegate> strongDelegate;
+@property (nonatomic, strong) NSOperationQueue *originalQueue;
 
 @end
 
@@ -27,6 +29,7 @@
 - (void) analyzeString:(NSString *)inputString andNotifyDelegate:(id<AnalyzingStrategyDelegate>)delegate{
     
     self.analysisDelegate = delegate;
+    self.strongDelegate = delegate;
     
     NSError *initError = nil;
     
@@ -66,15 +69,26 @@
 - (void) webViewDidFinishLoad:(UIWebView *)webView{
     
     webView.delegate = nil;
-    NSString* text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    __block NSString* text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
-    [self finishAnalyzingURLWithResultTitle:text];
+    __block URLAnalyzer *blockSafeSelf = self;
+    
+    [self.originalQueue addOperationWithBlock:^{
+        [blockSafeSelf finishAnalyzingURLWithResultTitle:text];
+    }];
+    
 }
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
     webView.delegate = nil;
-    [self finishAnalyzingURLWithResultTitle:@"n/a"];
+    
+    __block URLAnalyzer *blockSafeSelf = self;
+    
+    [self.originalQueue addOperationWithBlock:^{
+        [blockSafeSelf finishAnalyzingURLWithResultTitle:@"n/a"];
+    }];
+    
     
 }
 
@@ -104,15 +118,19 @@
     self.analysisResult = [NSMutableDictionary dictionaryWithCapacity:1];
     [self.analysisResult setObject:self.analysisResultQueue forKey:kHipChatAnalysisItemKey_Links];
     
-    if (self.analysisDelegate) {
-        
-        if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        if (self.analysisDelegate) {
             
-            [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+            if ([self.analysisDelegate respondsToSelector:@selector(analyzingStrategy:didFinishAnalysisWithResult:)]) {
+                
+                [self.analysisDelegate analyzingStrategy:self didFinishAnalysisWithResult:self.analysisResult];
+                
+            }
             
         }
-        
-    }
+    }];
+    
 }
 
 #pragma mark - Individual URL analysis
@@ -132,12 +150,22 @@
     if (self.offlineMode || netStatus == NotReachable) {
         [self webView:self.webview didFailLoadWithError:nil];
     }else{
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aURL];
-        request.timeoutInterval = 30;
         
-        self.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-        self.webview.delegate = self;
-        [self.webview loadRequest:request];
+        __block URLAnalyzer *blockSafeSelf = self;
+        self.originalQueue = [NSOperationQueue currentQueue];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aURL];
+            request.timeoutInterval = 30;
+            
+            blockSafeSelf.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+            blockSafeSelf.webview.delegate = blockSafeSelf;
+            [blockSafeSelf.webview loadRequest:request];
+            
+        }];
+        
+        
     }
     
 }
