@@ -10,8 +10,8 @@ learning more about string analysis in chat messaging
 
 ## Code Example
 ```
-HipChatAnalyzer *hipChatAnalyzerhipChatAnalyzer = [[HipChatAnalyzer alloc] init];
-[self.hipChatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
+HipChatAnalyzer *hipChatAnalyzer = [[HipChatAnalyzer alloc] init];
+[hipChatAnalyzer analyzeChatMessage:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016" withDelegate:self];
 
 - (void) chatMessageAnalyzer:(id<ChatMessageAnalyzer>)messageAnalyzer didFinishWithResult:(NSString *)jsonString{
 //add your code here
